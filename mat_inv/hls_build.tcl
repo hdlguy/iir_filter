@@ -11,7 +11,8 @@ add_files src/inv_4x4.cpp
 add_files -tb src/inv_4x4_tb.cpp
 
 open_solution -reset "solution1"
-set_part {xczu3eg-sfva625-1-i} -tool vivado
+# set_part {xczu3eg-sfva625-1-i} -tool vivado
+set_part {xczu3eg-sfva625-1-i}
 create_clock -period 10 -name default
 
 #set_directive_pipeline -II 10 "inv_4x4"
