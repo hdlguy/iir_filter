@@ -1,5 +1,6 @@
 #include <ap_int.h>
 #include <ap_fixed.h>
+#include <math.h>
 
 const int DataWordSize = 18;
 const int DataIntSize = 4;

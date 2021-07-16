@@ -3,6 +3,7 @@
 
 data_type iir(data_type x)
 {
+#pragma HLS PIPELINE II=1
 	const int Nsoc = 3; // number of second order sections.
 	static data_type sig_array[Nsoc];
 	const coeff_type coeff_array[Nsoc][5] = {
