@@ -4,18 +4,22 @@
 data_type iir(data_type x)
 {
 #pragma HLS PIPELINE II=1
-	const int Nsoc = 3; // number of second order sections.
-	static data_type sig_array[Nsoc];
-	const coeff_type coeff_array[Nsoc][5] = {
-			// These are not valid coefficients.
-			{ 1.5, 2.3, 0.8, 3.3, 1.2 },
-			{ 1.4, 2.2, 0.7, 3.2, 1.1 },
-			{ 1.6, 2.4, 0.9, 3.4, 1.3 }
-	};
 
-	for(int i=0;i<Nsoc;i++){
-		sig_array[i] = soc(x, coeff_array[i][0], coeff_array[i][1], coeff_array[i][2], coeff_array[i][3], coeff_array[i][4]);
+    const int Nsos = 4; // number of second order sections.
+    static data_type sig_array[Nsos];
+    const coeff_type coeff_array[Nsos][6] = {
+        {+0.0927734375, +0.1499023438, +0.0927734375, +1.0000000000, -1.4143066406, +0.9826660156 },
+        {+0.0927734375, +0.0200195312, +0.0927734375, +1.0000000000, -1.5029296875, +0.9450683594 },
+        {+0.0927734375, -0.0454101562, +0.0927734375, +1.0000000000, -1.6750488281, +0.9016113281 },
+        {+0.0927734375, -0.0681152344, +0.0927734375, +1.0000000000, -1.8320312500, +0.8674316406 }
+    };
+
+	static data_type sig_array[Nsos+1];
+    sig_array[0] = x;
+
+	for(int i=0;i<Nsos;i++){
+		sig_array[i+1] = soc(sig_array[i], coeff_array[i][0], coeff_array[i][1], coeff_array[i][2], coeff_array[i][3], coeff_array[i][4], coeff_array[i][5]);
 	}
 
-	return(sig_array[Nsoc-1]);
+	return(sig_array[Nsos]);
 }
