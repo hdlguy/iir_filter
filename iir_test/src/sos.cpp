@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "iir.hpp"
 
-data_type soc(data_type x, const coeff_type b0, coeff_type b1, coeff_type b2, coeff_type a0, coeff_type a1, coeff_type a2) // a0 is not used, a0 === 1.0
+data_type sos(data_type x, const coeff_type b0, coeff_type b1, coeff_type b2, coeff_type a0, coeff_type a1, coeff_type a2) // a0 is not used, a0 === 1.0
 {
 #pragma HLS PIPELINE II=1
 	static data_type x_array[3], y_array[3];

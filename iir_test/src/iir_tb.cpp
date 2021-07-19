@@ -4,7 +4,7 @@
 
 int main()
 {
-	const int Nsim = 128;
+	const int Nsim = 32;
 
 	data_type x, y[Nsim];
 
