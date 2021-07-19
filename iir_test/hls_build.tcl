@@ -1,15 +1,14 @@
 # This script sets up and compiles an HLS project.
 #
-# vivado_hls hls_build.tcl
-# cd csynth
-# vivado_hls vivado_hls.app
+# vitis_hls hls_build.tcl
+# vitis_hls proj/hls.app
 
-open_project -reset csynth
+open_project -reset proj
 set_top iir
 add_files src/iir.hpp
 add_files src/iir.cpp
 add_files src/soc.cpp
-#add_files -tb src/iir_tb.cpp
+add_files -tb src/iir_tb.cpp
 
 open_solution -reset "solution1"
 set_part {xczu3eg-sfva625-1-i}
