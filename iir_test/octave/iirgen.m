@@ -1,6 +1,6 @@
 clear; 
-Nsos = 2; % number of second order sections
-Wc=0.25; %0.02; 
+Nsos = 1; % number of second order sections
+Wc=0.125; %0.02; 
 
 coeff_int = 2;
 coeff_frac = 12;
@@ -9,8 +9,8 @@ coeff_width = coeff_int + coeff_frac;
 %  iir filter
 
 [b, a] = butter(Nsos*2,Wc); 
-%[b, a] = besself(N,Wc); 
-%Rp = 5; Rs = 5; [b, a] = ellip (N, Rp, Rs, Wc);
+%[b, a] = besself(Nsos*2,Wc); 
+%Rp = 5; Rs = 20; [b, a] = ellip (Nsos*2, Rp, Rs, Wc);
 
 %freqz(b,a,4096);
 
@@ -33,7 +33,7 @@ if (max_q_coeff_int > (2^(coeff_int-2))) printf("ERROR: not enough integer bits.
 %freqz(b_q, a_q, 4096);
 
 % simulate the filter.
-Nsim = 32;
+Nsim = 64;
 s=zeros(1,Nsim); s(10) = 1; % impulse
 
 % direct implementation

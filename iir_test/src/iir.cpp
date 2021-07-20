@@ -7,10 +7,9 @@ data_type iir(data_type x)
 #pragma HLS PIPELINE II=1
 
     // coefficients from iirgen.m
-    const int Nsos = 2; // number of second order sections.
+    const int Nsos = 1; // number of second order sections.
     const coeff_type coeff_array[Nsos][6] = {
-        { +0.1010742188, +0.2021484375, +0.1010742188, +1.0000000000, -0.8554687500, +0.2097167969 },
-        { +0.1010742188, +0.2021484375, +0.1010742188, +1.0000000000, -1.1130371094, +0.5739746094 }
+        { +0.0300292969, +0.0598144531, +0.0300292969, +1.0000000000, -1.4543457031, +0.5739746094 }
     };
 
 	static data_type sig_array[Nsos+1];
