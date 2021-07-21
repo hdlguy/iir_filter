@@ -12,16 +12,17 @@ load_features ipintegrator
 tclapp::install ultrafast -quiet
 
 set_property  ip_repo_paths  ../../hls_proj/solution1/impl/ip/ [current_project]
-#set_property  ip_repo_paths  /home/pedro/git/hls_test/iir_test/hls_proj/solution1/impl/ip [current_project]
 update_ip_catalog
 
-#read_ip ../../source/artix_vio/artix_vio.xci
+read_ip ../source/clk_wiz/clk_wiz.xci
+read_ip ../source/iir_ila/iir_ila.xci
+read_ip ../source/iir_hls_core/iir_hls_core.xci
 upgrade_ip -quiet  [get_ips *]
 generate_target {all} [get_ips *]
 
-#read_verilog -sv [glob ../../source/arty_top.v]
+read_verilog -sv [glob ../source/top.sv]
 
-#read_xdc ../../source/arty_top.xdc
+read_xdc ../source/top.xdc
 
 close_project
 

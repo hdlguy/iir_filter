@@ -1,5 +1,5 @@
 clear; 
-Nsos = 1; % number of second order sections
+Nsos = 2; % number of second order sections
 Wc=0.125; %0.02; 
 
 coeff_int = 2;
