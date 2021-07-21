@@ -4,12 +4,12 @@
 
 int main()
 {
-	const int Nsim = 64;
+	const int Nsim = 256;
 
 	data_type x, y[Nsim];
 
 	for (int i=0; i<Nsim; i++){
-		if (10==i) x = 1.0; else x = 0.0;
+		if (4==i) x = 1.0; else x = 0.0;
 		y[i] = iir(x);
 	}
 

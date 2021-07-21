@@ -1,26 +1,35 @@
-#include <stdio.h>
 #include "iir.hpp"
 
 data_type iir(data_type x)
 {
 #pragma HLS PIPELINE II=1
 
-    // coefficients from iirgen.m
-    const int Nsos = 2; // number of second order sections.
-    const coeff_type coeff_array[Nsos][6] = {
-        { +0.0305175781, +0.0610351562, +0.0305175781, +1.0000000000, -1.3652343750, +0.4775390625 },
-        { +0.0305175781, +0.0610351562, +0.0305175781, +1.0000000000, -1.6118164062, +0.7446289062 }
-    };
+	static data_type x_array[Nsos][3];
+	static data_type y_array[Nsos][3];
+	coeff_type b0, b1, b2, a0, a1, a2;
 
-	data_type sig_array[Nsos+1];
-    sig_array[0] = x;
+	data_type temp = x;
 
+	// loop over the Second Order Sections
 	for(int i=0;i<Nsos;i++){
-#pragma HLS UNROLL
-		sig_array[i+1] = sos(sig_array[i], coeff_array[i][0], coeff_array[i][1], coeff_array[i][2], coeff_array[i][3], coeff_array[i][4], coeff_array[i][5]);
-	}
-	std::cout << sig_array[0] << " " << sig_array[1] << " " << sig_array[2] << "\n";
 
-	//return(sig_array[Nsos]);
-	return(sig_array[1]);
+		// get coeffs
+		b0=coeff_array[i][0]; b1=coeff_array[i][1]; b2=coeff_array[i][2]; a1=coeff_array[i][4]; a2=coeff_array[i][5];
+
+		// feed forward shift register
+		x_array[i][2] = x_array[i][1];
+		x_array[i][1] = x_array[i][0];
+		x_array[i][0] = temp;
+
+		// the filter
+		y_array[i][0] = b0*x_array[i][0] + b1*x_array[i][1] + b2*x_array[i][2] - a1*y_array[i][1] - a2*y_array[i][2];
+
+		// feedback shift register
+		y_array[i][2] = y_array[i][1];
+		y_array[i][1] = y_array[i][0];
+		temp = y_array[i][0];
+
+	}
+
+	return(temp);
 }

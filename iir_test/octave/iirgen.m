@@ -1,6 +1,6 @@
 clear; 
-Nsos = 2; % number of second order sections
-Wc=0.125; %0.02; 
+Nsos = 4; % number of second order sections
+Wc=1/16; 
 
 coeff_int = 2;
 coeff_frac = 12;
@@ -33,8 +33,8 @@ if (max_q_coeff_int > (2^(coeff_int-2))) printf("ERROR: not enough integer bits.
 %freqz(b_q, a_q, 4096);
 
 % simulate the filter.
-Nsim = 64;
-s=zeros(1,Nsim); s(10) = 1; % impulse
+Nsim = 256;
+s=zeros(1,Nsim); s(5) = 1; % impulse
 
 % direct implementation
 s_filt = filter(b_q,a_q,s);

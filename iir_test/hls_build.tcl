@@ -7,7 +7,6 @@ open_project -reset hls_proj
 set_top iir
 add_files src/iir.hpp
 add_files src/iir.cpp
-add_files src/sos.cpp
 add_files -tb src/iir_tb.cpp
 
 open_solution -reset "solution1"
