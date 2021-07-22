@@ -8,9 +8,10 @@ coeff_width = coeff_int + coeff_frac;
 
 %  iir filter
 
-[b, a] = butter(Nsos*2,Wc); 
+%[b, a] = butter(Nsos*2,Wc); 
 %[b, a] = besself(Nsos*2,Wc); 
 %Rp = 5; Rs = 20; [b, a] = ellip (Nsos*2, Rp, Rs, Wc);
+Rp=5; [b, a]=cheby1(Nsos*2, Rp, Wc);
 
 %freqz(b,a,4096);
 
@@ -33,7 +34,7 @@ if (max_q_coeff_int > (2^(coeff_int-2))) printf("ERROR: not enough integer bits.
 %freqz(b_q, a_q, 4096);
 
 % simulate the filter.
-Nsim = 256;
+Nsim = 1024;
 s=zeros(1,Nsim); s(5) = 1; % impulse
 
 % direct implementation
