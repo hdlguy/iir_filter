@@ -1,5 +1,5 @@
 disconnect_hw_server -quiet
-open_hw
+open_hw_manager
 connect_hw_server
 open_hw_target [lindex [get_hw_targets -of_objects [get_hw_servers]] 0]
 #set_property PROGRAM.FILE {/opt/Xilinx/Vivado/2014.4/data/xicom/cfgmem/bitfile/spi_xc7a50t_pullnone.bit} [lindex [get_hw_devices] 0]

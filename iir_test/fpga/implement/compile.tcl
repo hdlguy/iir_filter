@@ -13,7 +13,6 @@ launch_runs impl_1 -to_step write_bitstream -jobs 8
 wait_on_run impl_1
 
 open_run impl_1
-write_checkpoint        -force ./results/post_route.dcp
 write_bitstream         -force ./results/top.bit
 report_timing_summary   -file  ./results/timing.rpt
 report_utilization      -file  ./results/utilization.rpt
