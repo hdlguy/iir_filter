@@ -2,13 +2,11 @@ disconnect_hw_server -quiet
 open_hw_manager
 connect_hw_server
 open_hw_target [lindex [get_hw_targets -of_objects [get_hw_servers]] 0]
-#set_property PROGRAM.FILE {/opt/Xilinx/Vivado/2014.4/data/xicom/cfgmem/bitfile/spi_xc7a50t_pullnone.bit} [lindex [get_hw_devices] 0]
-#set_property PROBES.FILE {/opt/Xilinx/Vivado/2014.4/data/xicom/cfgmem/bitfile/debug_nets.ltx} [lindex [get_hw_devices] 0]
 current_hw_device [lindex [get_hw_devices] 0]
 refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
 refresh_hw_device [lindex [get_hw_devices] 0]
-#create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev  [lindex [get_cfgmem_parts {n25q256-3.3v-spi-x1_x2_x4}] 0]
-create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev  [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+#create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev  [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev  [lindex [get_cfgmem_parts {mt25ql128-spi-x1_x2_x4}] 0]
 set_property PROGRAM.BLANK_CHECK  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices] 0 ]]
 set_property PROGRAM.ERASE  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices] 0 ]]
 set_property PROGRAM.CFG_PROGRAM  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices] 0 ]]
@@ -29,5 +27,5 @@ endgroup
 
 boot_hw_device  [lindex [get_hw_devices] 0]
 
-close_hw
+close_hw_manager
 
