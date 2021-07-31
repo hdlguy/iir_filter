@@ -2,11 +2,11 @@
 
 data_type iir(data_type x)
 {
-#pragma HLS PIPELINE II=1
+#pragma HLS PIPELINE II=6
 
 	static data_type x_array[Nsos][3];
 	static data_type y_array[Nsos][3];
-	coeff_type b0, b1, b2, a0, a1, a2;
+	coeff_type b0, b1, b2, a1, a2;
 
 	data_type temp = x;
 
