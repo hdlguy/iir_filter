@@ -1,7 +1,8 @@
 # hls_iir_filter
 
 ## Overview
-This project implements an IIR digital filter as a cascade of second order sections using Vivado HLS and C++.
+
+This project implements an IIR digital filter in FPGA logic as a cascade of second order sections using Octave, Vivado HLS and C++.
 
 ## Files
 
