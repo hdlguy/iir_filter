@@ -14,7 +14,8 @@ int main()
 	}
 
 	std::cout << "writing y.dat\n";
-	std::ofstream outf { "../../../y.dat" };
+	//std::ofstream outf { "../../../y.dat" };
+	std::ofstream outf { "./y.dat" };
 	for (int i=0; i<Nsim; i++){
 		outf << y[i] << "\n";
 	}
