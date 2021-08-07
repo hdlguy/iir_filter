@@ -13,7 +13,7 @@ printvars:
 
 DEPS = Makefile iir.hpp
 
-main: iir_tb.o iir.o
+main: iir_tb.o
 	$(CC) -g -o $@ $^ -lm
 
 clean:
@@ -21,6 +21,7 @@ clean:
 
 #pattern rules
 %.o: %.cpp $(DEPS)
+#%.o: %.cpp
 	$(CC) $(CFLAGS) -g -c -o $@ $<
 
 
