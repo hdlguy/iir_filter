@@ -16,7 +16,8 @@ int main()
 
     std::complex<data_type> x, y;
     double freq, phase, rate;
-    rate = 2.0*M_PI/Nsim; freq = -M_PI; phase = 0.0;
+    double zoom = 4;
+    rate = 2.0*M_PI/(zoom*Nsim); freq = -M_PI/zoom; phase = 0.0;
 
 	std::cout << "writing lfm.dat\n";
 	std::ofstream outf2 { "./lfm.dat" };
@@ -26,8 +27,8 @@ int main()
         freq  += rate;
         x = exp(j*phase);
 
-        y.real(iir_real.iirfilt(x.real())); 
-        y.imag(iir_imag.iirfilt(x.imag()));
+        y.real(iir_real.filter(x.real())); 
+        y.imag(iir_imag.filter(x.imag()));
 
         double absval = sqrt( double(y.real())*double(y.real()) + double(y.imag())*double(y.imag()));
         outf2 << y.real() << "  " << y.imag() << "  " << absval << "\n";

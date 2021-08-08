@@ -30,7 +30,7 @@ class iir {
 	data_type y_array[Nsos][3];
   public:
     iir();
-    data_type iirfilt(data_type x);
+    data_type filter(data_type x);
 };
 
 
@@ -46,7 +46,7 @@ iir::iir(){
 }
 
 
-data_type iir::iirfilt(data_type x)
+data_type iir::filter(data_type x)
 {
 
 	coeff_type b0, b1, b2, a1, a2;
