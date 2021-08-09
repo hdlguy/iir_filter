@@ -13,7 +13,7 @@ printvars:
 
 DEPS = Makefile iir.hpp
 
-main: iir_tb.o
+main: iir_tb.o iir.o
 	$(CC) -g -o $@ $^ -lm
 
 clean:

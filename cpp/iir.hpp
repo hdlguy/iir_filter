@@ -23,7 +23,6 @@ const coeff_type coeff_array[Nsos][6] = {
     { +0.0026855469, +0.0051269531, +0.0026855469, +1.0000000000, -1.9680175781, +0.9697265625 }
 };
 
-
 class iir {
   private:
 	data_type x_array[Nsos][3];
@@ -34,6 +33,7 @@ class iir {
 };
 
 
+/*
 iir::iir(){
     // initialize the data delay lines.
     for (int sec=0; sec<Nsos; sec++) {
@@ -42,7 +42,6 @@ iir::iir(){
             y_array[sec][i] = 0.0;
         }
     }
-
 }
 
 
@@ -76,3 +75,4 @@ data_type iir::filter(data_type x)
 
 	return(temp);
 }
+*/

@@ -11,7 +11,7 @@ int main()
     iir iir_real, iir_imag;
 
     // test frequency response with linear fm signal.
-    const int Nsim = 1024*1024;
+    const int Nsim = 64*1024;
     const std::complex<double> j(0.0, 1.0);
 
     std::complex<data_type> x, y;

@@ -1,11 +1,19 @@
 #include "iir.hpp"
 
-data_type iir(data_type x)
-{
-#pragma HLS PIPELINE II=6
+iir::iir(){
+    // initialize the data delay lines.
+    for (int sec=0; sec<Nsos; sec++) {
+        for (int i=0; i<3; i++) {
+            x_array[sec][i] = 0.0;
+            y_array[sec][i] = 0.0;
+        }
+    }
+}
 
-	static data_type x_array[Nsos][3];
-	static data_type y_array[Nsos][3];
+
+data_type iir::filter(data_type x)
+{
+
 	coeff_type b0, b1, b2, a1, a2;
 
 	data_type temp = x;
@@ -33,3 +41,4 @@ data_type iir(data_type x)
 
 	return(temp);
 }
+
