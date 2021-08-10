@@ -16,7 +16,7 @@ update_ip_catalog
 
 read_ip ../source/clk_wiz/clk_wiz.xci
 read_ip ../source/iir_ila/iir_ila.xci
-read_ip ../source/iir_hls_core/iir_hls_core.xci
+read_ip ../source/iir_filter_core/iir_filter_core.xci
 upgrade_ip -quiet  [get_ips *]
 generate_target {all} [get_ips *]
 

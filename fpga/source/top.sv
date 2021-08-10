@@ -12,7 +12,7 @@ module top(
     
     assign ap_start = 1;
 
-    iir_hls_core uut (
+    iir_filter_core uut (
        .ap_clk      (clk),          // input wire ap_clk
        .ap_rst      (0),            // input wire ap_rst
        .ap_start    (ap_start),     // input wire ap_start
