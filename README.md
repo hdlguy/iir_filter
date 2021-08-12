@@ -14,5 +14,5 @@ This project implements an IIR digital filter in FPGA logic as a cascade of seco
 
 ./octave: - M script to generate the filter coefficients for the filter.
 
-./src: - C++ source files for the IIR filter.
+./cpp: - C++ source files for the IIR filter.
 
