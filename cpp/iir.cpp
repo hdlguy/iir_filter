@@ -13,13 +13,15 @@ iir::iir(){
 
 data_type iir::filter(data_type x)
 {
+#pragma HLS ALLOCATION operation instances=mul limit=4
+#pragma HLS PIPELINE II=6
 
 	coeff_type b0, b1, b2, a1, a2;
 
 	data_type temp = x;
 
 	// loop over the Second Order Sections
-	for(int i=0;i<Nsos;i++){
+	label0:for(int i=0;i<Nsos;i++){
 
 		// get coeffs
 		b0=coeff_array[i][0]; b1=coeff_array[i][1]; b2=coeff_array[i][2]; a1=coeff_array[i][4]; a2=coeff_array[i][5];

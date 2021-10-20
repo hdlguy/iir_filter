@@ -8,10 +8,10 @@ coeff_width = coeff_int + coeff_frac;
 
 %  iir filter
 
-%[b, a] = butter(Nsos*2,Wc); 
+[b, a] = butter(Nsos*2,Wc); 
 %[b, a] = besself(Nsos*2,Wc); 
 %Rp = 5; Rs = 20; [b, a] = ellip (Nsos*2, Rp, Rs, Wc);
-Rp=5; [b, a]=cheby1(Nsos*2, Rp, Wc);
+%Rp=5; [b, a]=cheby1(Nsos*2, Rp, Wc);
 
 %freqz(b,a,4096);
 

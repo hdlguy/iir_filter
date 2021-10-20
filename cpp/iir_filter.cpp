@@ -6,6 +6,7 @@
 
 data_type iir_filter(data_type x)
 {
+#pragma HLS PIPELINE II=6
 
     static iir iir1;
     data_type y;

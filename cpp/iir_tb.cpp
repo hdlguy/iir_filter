@@ -30,8 +30,8 @@ int main()
         y.real(iir_real.filter(x.real())); 
         y.imag(iir_imag.filter(x.imag()));
 
-        double absval = sqrt( double(y.real())*double(y.real()) + double(y.imag())*double(y.imag()));
-        outf2 << y.real() << "  " << y.imag() << "  " << absval << "\n";
+        //double absval = sqrt( double(y.real())*double(y.real()) + double(y.imag())*double(y.imag()));
+        outf2 << x.real() << "  " << x.imag() << "  " << y.real() << "  " << y.imag() << "\n";
     }
 
 
