@@ -13,12 +13,13 @@ iir::iir(){
 
 data_type iir::filter(data_type x)
 {
-#pragma HLS ALLOCATION operation instances=mul limit=4
-#pragma HLS PIPELINE II=6
+//#pragma HLS ALLOCATION operation instances=mul limit=4
+#pragma HLS PIPELINE II=7
 
 	coeff_type b0, b1, b2, a1, a2;
 
 	data_type temp = x;
+	accum_type acc;
 
 	// loop over the Second Order Sections
 	label0:for(int i=0;i<Nsos;i++){
@@ -32,7 +33,8 @@ data_type iir::filter(data_type x)
 		x_array[i][0] = temp;
 
 		// the filter
-		y_array[i][0] = b0*x_array[i][0] + b1*x_array[i][1] + b2*x_array[i][2] - a1*y_array[i][1] - a2*y_array[i][2];
+		acc = b0*x_array[i][0] + b1*x_array[i][1] + b2*x_array[i][2] - a1*y_array[i][1] - a2*y_array[i][2];
+		y_array[i][0] = acc;
 
 		// feedback shift register
 		y_array[i][2] = y_array[i][1];

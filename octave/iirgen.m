@@ -1,16 +1,16 @@
 clear; 
-Nsos = 4; % number of second order sections
-Wc=1/16; 
+Nsos = 3; % number of second order sections
+Wc=1/256; 
 
-coeff_int = 2;
-coeff_frac = 12;
-coeff_width = coeff_int + coeff_frac;
+coeff_int = 4;
+coeff_width = 18;
+coeff_frac = coeff_width-coeff_int;
 
 %  iir filter
 
-[b, a] = butter(Nsos*2,Wc); 
+[b, a] = butter(Nsos*2, Wc, "high"); 
 %[b, a] = besself(Nsos*2,Wc); 
-%Rp = 5; Rs = 20; [b, a] = ellip (Nsos*2, Rp, Rs, Wc);
+%Rp = 5; Rs = 20; [b, a] = ellip(Nsos*2, Rp, Rs, Wc, "high");
 %Rp=5; [b, a]=cheby1(Nsos*2, Rp, Wc);
 
 %freqz(b,a,4096);

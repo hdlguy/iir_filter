@@ -16,7 +16,7 @@ int main()
 
     std::complex<data_type> x, y;
     double freq, phase, rate;
-    double zoom = 4;
+    double zoom = 32;
     rate = 2.0*M_PI/(zoom*Nsim); freq = -M_PI/zoom; phase = 0.0;
 
 	std::cout << "writing lfm.dat\n";
