@@ -38,7 +38,8 @@ Nsim = 1024;
 s=zeros(1,Nsim); s(5) = 1; % impulse
 
 % direct implementation
-s_filt = filter(b_q,a_q,s);
+%s_filt = filter(b_q,a_q,s);
+s_filt = filter(b,a,s);
 
 % cascaded SOS
 s_filt2 = s;
@@ -68,16 +69,33 @@ endfor
 plot(s_filt, '*r-'); hold on; plot(s_filt3, 'ob-'); hold off;
 
 % print out the coefficients in C++ table. 
-printf("    const int Nsos = %d; // number of second order sections.\n", Nsos);
-printf("    const coeff_type coeff_array[Nsos][6] = {\n");
+
+printf("const int CoeffWordSize = %d;\n", coeff_width);
+printf("const int CoeffIntSize = %d;\n", coeff_int);
+printf("typedef ap_fixed<CoeffWordSize, CoeffIntSize, AP_RND, AP_SAT, 0> coeff_type;\n");
+printf("const int Nsos = %d; // number of second order sections.\n", Nsos);
+
+printf("const coeff_type coeff_array[Nsos][6] = {\n");
 for i=1:Nsos
-    printf("        { ");
+    printf("    { ");
     for j=1:6
         printf("%+3.10f", sos_q_scaled(i,j));
         if (j==6) printf(" "); else printf(", "); endif
     endfor
     if (i==Nsos) printf("}\n"); else printf("},\n"); endif
 endfor
-printf("    };\n");
+printf("};\n");
+
+
+
+
+
+
+
+
+
+
+
+
 
 
