@@ -27,7 +27,7 @@ const coeff_type coeff_array[Nsos][6] = {
 };
 
 
-typedef ap_fixed<DataWordSize+CoeffWordSize, DataIntSize+CoeffIntSize, AP_TRN, AP_WRAP, 0> accum_type;
+typedef ap_fixed<DataWordSize+CoeffWordSize+3, DataIntSize+CoeffIntSize, AP_TRN, AP_WRAP, 0> accum_type;
 
 class iir {
   private:
