@@ -17,36 +17,65 @@ module iir_sos_tb ();
 
     iir_sos #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff)) uut (.*);
 
-    localparam int Npulse = 500;
     localparam int Gpulse = +2**Ndfrac;
+    real phase, freq, rate;
+    localparam real pi = 3.1419527;
+    localparam real chirprate = 2.0*pi/((2.0**16.0)-1.0);
     initial begin
     
         dv_in = 0;
         d_in = 0;
+        phase = 0;
+        freq = 0;
+        rate = chirprate;
         #(clk_period*6);
         
         forever begin
         
-            for (int i=0; i<Npulse; i++) begin
-                dv_in = 0;
-                #(clk_period*6);
-                dv_in = 1;
-                d_in = 0;
-                #(clk_period*1);
-            end
-            
-            for (int i=0; i<Npulse; i++) begin
-                dv_in = 0;
-                #(clk_period*6);
-                dv_in = 1;
-                d_in = +Gpulse;
-                #(clk_period*1);
-            end
+            dv_in = 0;
+            #(clk_period*6);
+            dv_in = 1;
+            phase = phase + freq;
+            freq  = freq  + rate;
+            d_in = (2.0**Ndfrac)*$sin(phase);
+            #(clk_period*1);            
             
         end
+        
     end
 
 endmodule
+
+//    localparam int Npulse = 500;
+//    localparam int Gpulse = +2**Ndfrac;
+//    initial begin
+    
+//        dv_in = 0;
+//        d_in = 0;
+//        #(clk_period*6);
+        
+//        forever begin
+        
+//            for (int i=0; i<Npulse; i++) begin
+//                dv_in = 0;
+//                #(clk_period*6);
+//                dv_in = 1;
+//                d_in = 0;
+//                #(clk_period*1);
+//            end
+            
+//            for (int i=0; i<Npulse; i++) begin
+//                dv_in = 0;
+//                #(clk_period*6);
+//                dv_in = 1;
+//                d_in = +Gpulse;
+//                #(clk_period*1);
+//            end
+            
+//        end
+        
+//    end
+
 
 /*
 module iir_sos #(
