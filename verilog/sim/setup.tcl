@@ -14,6 +14,7 @@ set_property default_lib work [current_project]
 #generate_target {all} [get_ips *]
 
 
+read_verilog -sv ../round_n_sat.sv
 read_verilog -sv ../iir_sos.sv
 read_verilog -sv ../iir_sos_tb.sv
 

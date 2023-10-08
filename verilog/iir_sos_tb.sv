@@ -17,16 +17,32 @@ module iir_sos_tb ();
 
     iir_sos #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff)) uut (.*);
 
+    localparam int Npulse = 500;
+    localparam int Gpulse = +2**Ndfrac;
     initial begin
+    
         dv_in = 0;
         d_in = 0;
         #(clk_period*6);
+        
         forever begin
-            dv_in = 0;
-            #(clk_period*6);
-            dv_in = 1;
-            d_in++;
-            #(clk_period*1);
+        
+            for (int i=0; i<Npulse; i++) begin
+                dv_in = 0;
+                #(clk_period*6);
+                dv_in = 1;
+                d_in = 0;
+                #(clk_period*1);
+            end
+            
+            for (int i=0; i<Npulse; i++) begin
+                dv_in = 0;
+                #(clk_period*6);
+                dv_in = 1;
+                d_in = +Gpulse;
+                #(clk_period*1);
+            end
+            
         end
     end
 

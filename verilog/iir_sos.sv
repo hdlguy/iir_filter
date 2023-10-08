@@ -27,19 +27,76 @@ module iir_sos #(
 
     // the shift register for data and feedback.
     logic[2:0][Ndint-1:-Ndfrac]  x=0;
-    logic[2:0][Ndint-1:-Ndfrac]  y=0;
+    logic[2:1][Ndint-1:-Ndfrac]  y=0;
+    logic[Ndint-1:-Ndfrac]  acc_sat;
 
     // the accumulator needs room for the five multiply accumulation cycles
-    logic[Ndint+Ncint+3-1:Ndfrac+Ncfrac] acc=0;
+    logic[Ndint+Ncint+3-1:-(Ndfrac+Ncfrac)] acc=0;
 
+    logic[5:0] dv_pipe=0;
     always_ff @(posedge clk) begin
+    
+        dv_out <= dv_in;
 
+        // input sample shifter
         if (dv_in) begin
             x[0] <= d_in;
             x[1] <= x[0];
             x[2] <= x[1];
+            y[1] <= acc_sat;
+            y[2] <= y[1];
         end
         
+        // simple shift register to track processing stage
+        dv_pipe <= {dv_pipe[4:0], dv_in};
+        
+        // processing steps - can be done with 1 multiplier
+        case (dv_pipe)
+        
+            6'b00_0001: begin
+                acc <=                $signed(b0) * $signed(x[0]);
+            end
+            
+            6'b00_0010: begin
+                acc <= $signed(acc) + $signed(b1) * $signed(x[1]);
+            end
+            
+            6'b00_0100: begin
+                acc <= $signed(acc) + $signed(b2) * $signed(x[2]);
+            end
+            
+            6'b00_1000: begin
+                acc <= $signed(acc) - $signed(a1) * $signed(y[1]);
+            end
+            
+            6'b01_0000: begin
+                acc <= $signed(acc) - $signed(a2) * $signed(y[2]);
+            end
+            
+            6'b10_0000: begin
+            end
+            
+            default: begin
+            end
+            
+        endcase
+        
     end
+    
+    // round and saturate the accumulator word into the data word.
+    round_n_sat #(.Win($bits(acc)), .Nround(Ncfrac), .Nsat(Ncint+3)) sat_inst (.din(acc), .dout(acc_sat));
+    
+    assign d_out = y[1];
 
 endmodule
+
+/*
+module round_n_sat  #(
+    parameter Win  = 16,      // input width
+    parameter Nround = 3, // number of LSB's to remove.
+    parameter Nsat = 4    // number of MSB's to remove.
+)(
+    input  logic [Win-1:0]                      din,
+    output logic [Win-Nsat-Nround-1:0]  dout
+);
+*/
