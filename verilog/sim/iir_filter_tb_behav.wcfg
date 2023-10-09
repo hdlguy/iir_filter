@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
-      <ZoomEndTime time="20.489205038 ms"></ZoomEndTime>
-      <Cursor1Time time="0.000000000 ms"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="10,001.000001 us"></ZoomEndTime>
+      <Cursor1Time time="0.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="199"></NameColumnWidth>
-      <ValueColumnWidth column_width="153"></ValueColumnWidth>
+      <ValueColumnWidth column_width="143"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="6" />
    <wvobject type="logic" fp_name="/iir_filter_tb/clk">
@@ -29,13 +29,13 @@
       <obj_property name="ObjectShortName">dv_in</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/iir_filter_tb/d_in">
-      <obj_property name="ElementShortName">d_in[2:-22]</obj_property>
-      <obj_property name="ObjectShortName">d_in[2:-22]</obj_property>
-      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="ElementShortName">d_in[17:0]</obj_property>
+      <obj_property name="ObjectShortName">d_in[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="CellHeight">200</obj_property>
       <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
-      <obj_property name="AnalogYRangeMin">-2.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">2.000000</obj_property>
+      <obj_property name="AnalogYRangeMin">-131100.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">131100.000000</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>
@@ -49,13 +49,13 @@
       <obj_property name="ObjectShortName">dv_out</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/iir_filter_tb/d_out">
-      <obj_property name="ElementShortName">d_out[2:-22]</obj_property>
-      <obj_property name="ObjectShortName">d_out[2:-22]</obj_property>
-      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="ElementShortName">d_out[17:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="CellHeight">200</obj_property>
       <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
-      <obj_property name="AnalogYRangeMin">-2.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">2.000000</obj_property>
+      <obj_property name="AnalogYRangeMin">-131100.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">131100.000000</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>
