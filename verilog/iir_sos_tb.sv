@@ -12,8 +12,7 @@ module iir_sos_tb ();
     logic[Ndint-1:-Ndfrac]  d_in;
     logic                   dv_out;
     logic[Ndint-1:-Ndfrac]  d_out;
-    logic clk=0; 
-    localparam time clk_period = 10; always #(clk_period/2) clk=~clk;
+    logic clk=0; localparam time clk_period = 10; always #(clk_period/2) clk=~clk;
 
     iir_sos #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff)) uut (.*);
 

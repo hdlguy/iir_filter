@@ -66,7 +66,7 @@ module iir_sos #(
             end
             
             6'b00_1000: begin
-                acc <= $signed(acc) - $signed(a1) * $signed(y[1]);
+                acc <= $signed(acc) - $signed(a1) * $signed(y[1]); // note the subtraction
             end
             
             6'b01_0000: begin
@@ -83,7 +83,7 @@ module iir_sos #(
         
     end
     
-    // round and saturate the accumulator word into the data word.
+    // round and saturate the 48-bit accumulator word into the data word.
     round_n_sat #(.Win($bits(acc)), .Nround(Ncfrac), .Nsat(Ncint+3)) sat_inst (.din(acc), .dout(acc_sat));
     
     assign d_out = y[1];
