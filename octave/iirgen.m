@@ -69,12 +69,10 @@ endfor
 plot(s_filt, '*r-'); hold on; plot(s_filt3, 'ob-'); hold off;
 
 % print out the coefficients in C++ table. 
-
 printf("const int CoeffWordSize = %d;\n", coeff_width);
 printf("const int CoeffIntSize = %d;\n", coeff_int);
 printf("typedef ap_fixed<CoeffWordSize, CoeffIntSize, AP_RND, AP_SAT, 0> coeff_type;\n");
 printf("const int Nsos = %d; // number of second order sections.\n", Nsos);
-
 printf("const coeff_type coeff_array[Nsos][6] = {\n");
 for i=1:Nsos
     printf("    { ");
@@ -84,13 +82,35 @@ for i=1:Nsos
     endfor
     if (i==Nsos) printf("}\n"); else printf("},\n"); endif
 endfor
-printf("};\n");
+printf("};\n\n");
 
 
+% print out the coeficients in Systemverilog table.
+printf("\n");
+printf("    localparam int  Ncint  = %d;\n", coeff_int);
+printf("    localparam int  Ncfrac = %d;\n", coeff_width-coeff_int);
+printf("    localparam int  Nsos = %d;\n", Nsos);
+printf("    localparam real coeff[0:Nsos-1][0:5] =  {\n");
+for i=1:Nsos
+    printf("        '{ ");
+    for j=1:6
+        printf("%+3.10f", sos_q_scaled(i,j));
+        if (j==6) printf(" "); else printf(", "); endif
+    endfor
+    if (i==Nsos) printf("}\n"); else printf("},\n"); endif
+endfor
+printf("    };\n\n");
 
-
-
-
+%    localparam int  Ndint = 3;
+%    localparam int  Ndfrac = 22;
+%    localparam int  Ncint = 4;
+%    localparam int  Ncfrac = 14;
+%    localparam int  Nsos = 3;
+%    localparam real coeff[0:Nsos-1][0:5] =  {
+%        '{ +0.9921264648, -1.9801635742, +0.9880371094, +1.0000000000, -1.9765014648, +0.9766845703 },
+%        '{ +0.9921264648, -1.9883422852, +0.9962158203, +1.0000000000, -1.9825439453, +0.9826660156 },
+%        '{ +0.9921264648, -1.9842529297, +0.9921264648, +1.0000000000, -1.9935302734, +0.9937133789 }
+%    };
 
 
 
