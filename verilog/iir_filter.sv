@@ -1,20 +1,21 @@
 //
 module iir_filter #(
-    parameter int   Nsos = 1,
     parameter int   Ndint = 3,
     parameter int   Ndfrac = 22,
     parameter int   Ncint = 4,
     parameter int   Ncfrac = 14,
-    parameter real  coeff[0:Nsos-1][0:5] =  {{97.631072937817507e-03, 195.262145875635014e-03, 97.631072937817507e-03, 1.000000000000000e+00, -942.809041582063173e-03, 333.333333333333258e-03}}
+    parameter int   Nsos = 1,
+    parameter real  coeff[0:Nsos-1][0:5] =  {'{97.631072937817507e-03, 195.262145875635014e-03, 97.631072937817507e-03, 1.000000000000000e+00, -942.809041582063173e-03, 333.333333333333258e-03}}
 )(
+    input   logic                   clk,
     input   logic                   dv_in,
     input   logic[Ndint-1:-Ndfrac]  d_in,
     output  logic                   dv_out,
-    output  logic[Ndint-1:-Ndfrac]  d_out,
+    output  logic[Ndint-1:-Ndfrac]  d_out
 );
 
-    logic   dv[Nsos:0] // data valid signals between SOS stages.
-    logic   data[Nsos:0][Ndint-1:-Ndfrac];  // data between SOS stages.
+    logic   dv[Nsos:0]; // data valid signals between SOS stages.
+    logic[Ndint-1:-Ndfrac] data[Nsos:0];  // data between SOS stages.
     assign dv[0] = dv_in;
     assign data[0] = d_in;
 

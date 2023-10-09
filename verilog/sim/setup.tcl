@@ -16,9 +16,10 @@ set_property default_lib work [current_project]
 
 read_verilog -sv ../round_n_sat.sv
 read_verilog -sv ../iir_sos.sv
-read_verilog -sv ../iir_sos_tb.sv
+read_verilog -sv ../iir_filter.sv
+read_verilog -sv ../iir_filter_tb.sv
 
-add_files -fileset sim_1 -norecurse ./iir_sos_tb_behav.wcfg
+add_files -fileset sim_1 -norecurse ./iir_filter_tb_behav.wcfg
 
 close_project
 
