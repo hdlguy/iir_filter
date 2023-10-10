@@ -42,7 +42,7 @@ module iir_filter_tb ();
             dv_in = 1;
             phase = phase + freq;
             freq  = freq  + rate;
-            d_in = ((2.0**17)-1.0)*$sin(phase);
+            d_in = ((2.0**16.0)-1.0)*$sin(phase);
             #(clk_period*1);            
             
         end

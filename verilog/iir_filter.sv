@@ -28,7 +28,8 @@ module iir_filter #(
 
     // Second Order Sections
     generate for(genvar i=0; i<Nsos; i++) begin
-        iir_sos #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff[i])) uut_real (.clk(clk), .dv_in(dv[i]), .d_in(data[i]), .dv_out(dv[i+1]), .d_out(data[i+1]));
+        //iir_sos #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff[i])) uut_real (.clk(clk), .dv_in(dv[i]), .d_in(data[i]), .dv_out(dv[i+1]), .d_out(data[i+1]));
+        iir_sos_dsp48 #(.Ndint(Ndint), .Ndfrac(Ndfrac), .Ncint(Ncint), .Ncfrac(Ncfrac), .coeff(coeff[i])) uut_real (.clk(clk), .dv_in(dv[i]), .d_in(data[i]), .dv_out(dv[i+1]), .d_out(data[i+1]));
     end endgenerate
     
 

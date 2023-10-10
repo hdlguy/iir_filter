@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="10,001.000001 us"></ZoomEndTime>
+      <ZoomEndTime time="9,902.573385 us"></ZoomEndTime>
       <Cursor1Time time="0.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="199"></NameColumnWidth>
-      <ValueColumnWidth column_width="143"></ValueColumnWidth>
+      <ValueColumnWidth column_width="113"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="35" />
    <wvobject type="logic" fp_name="/iir_filter_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -53,9 +53,8 @@
       <obj_property name="ObjectShortName">d_out[17:0]</obj_property>
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="CellHeight">200</obj_property>
-      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
-      <obj_property name="AnalogYRangeMin">-131100.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">131100.000000</obj_property>
+      <obj_property name="AnalogYRangeMin">-168476</obj_property>
+      <obj_property name="AnalogYRRangeMax">186685</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>
@@ -63,9 +62,135 @@
       <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
       <obj_property name="radix_fractionWidth">22</obj_property>
       <obj_property name="radix_otherWidth">0</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/iir_filter_tb/freq">
       <obj_property name="ElementShortName">freq</obj_property>
       <obj_property name="ObjectShortName">freq</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider13" type="divider">
+      <obj_property name="label">uut</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/iir_filter_tb/uut/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/iir_filter_tb/uut/dv_in">
+      <obj_property name="ElementShortName">dv_in</obj_property>
+      <obj_property name="ObjectShortName">dv_in</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/d_in">
+      <obj_property name="ElementShortName">d_in[17:0]</obj_property>
+      <obj_property name="ObjectShortName">d_in[17:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">17</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/iir_filter_tb/uut/dv_out">
+      <obj_property name="ElementShortName">dv_out</obj_property>
+      <obj_property name="ObjectShortName">dv_out</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/d_out">
+      <obj_property name="ElementShortName">d_out[17:0]</obj_property>
+      <obj_property name="ObjectShortName">d_out[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/dv">
+      <obj_property name="ElementShortName">dv[6:0]</obj_property>
+      <obj_property name="ObjectShortName">dv[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/data">
+      <obj_property name="ElementShortName">data[6:0][2:-22]</obj_property>
+      <obj_property name="ObjectShortName">data[6:0][2:-22]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/dout_sat">
+      <obj_property name="ElementShortName">dout_sat[17:0]</obj_property>
+      <obj_property name="ObjectShortName">dout_sat[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/Ncint">
+      <obj_property name="ElementShortName">Ncint[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ncint[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/Ncfrac">
+      <obj_property name="ElementShortName">Ncfrac[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ncfrac[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/Nsos">
+      <obj_property name="ElementShortName">Nsos[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nsos[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/coeff">
+      <obj_property name="ElementShortName">coeff[0:5][0:5]</obj_property>
+      <obj_property name="ObjectShortName">coeff[0:5][0:5]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/Ndint">
+      <obj_property name="ElementShortName">Ndint[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ndint[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/Ndfrac">
+      <obj_property name="ElementShortName">Ndfrac[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ndfrac[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider95" type="divider">
+      <obj_property name="label">sos</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /dv_pipe">
+      <obj_property name="ElementShortName">dv_pipe[5:0]</obj_property>
+      <obj_property name="ObjectShortName">dv_pipe[5:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /c">
+      <obj_property name="ElementShortName">c[47:0]</obj_property>
+      <obj_property name="ObjectShortName">c[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /acc_sat">
+      <obj_property name="ElementShortName">acc_sat[2:-22]</obj_property>
+      <obj_property name="ObjectShortName">acc_sat[2:-22]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider284" type="divider">
+      <obj_property name="label">sat</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/din">
+      <obj_property name="ElementShortName">din[47:0]</obj_property>
+      <obj_property name="ObjectShortName">din[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/dout">
+      <obj_property name="ElementShortName">dout[24:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[24:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/rounder">
+      <obj_property name="ElementShortName">rounder[47:0]</obj_property>
+      <obj_property name="ObjectShortName">rounder[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/round_val">
+      <obj_property name="ElementShortName">round_val[48:0]</obj_property>
+      <obj_property name="ObjectShortName">round_val[48:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/sat_check">
+      <obj_property name="ElementShortName">sat_check[10:0]</obj_property>
+      <obj_property name="ObjectShortName">sat_check[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/sat_detect">
+      <obj_property name="ElementShortName">sat_detect</obj_property>
+      <obj_property name="ObjectShortName">sat_detect</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/Win">
+      <obj_property name="ElementShortName">Win[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Win[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/Nround">
+      <obj_property name="ElementShortName">Nround[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nround[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/iir_filter_tb/uut/\genblk1[0].uut_real /sat_inst/Nsat">
+      <obj_property name="ElementShortName">Nsat[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nsat[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>

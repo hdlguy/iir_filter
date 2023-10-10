@@ -1,10 +1,10 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
-| Date         : Sun Oct  8 12:00:54 2023
+| Date         : Tue Oct 10 16:02:48 2023
 | Host         : WD-SN850 running 64-bit Ubuntu 20.04.6 LTS
 | Command      : report_timing_summary -file ./results/timing.rpt
-| Design       : iir_sos
+| Design       : iir_filter
 | Device       : 7a100ti-csg324
 | Speed File   : -1L  PRODUCTION 1.23 2018-06-13
 | Design State : Routed
@@ -42,7 +42,7 @@ Timing Summary Report
 
 Rule       Severity  Description                    Violations  
 ---------  --------  -----------------------------  ----------  
-TIMING-18  Warning   Missing input or output delay  52          
+TIMING-18  Warning   Missing input or output delay  38          
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -56,8 +56,8 @@ Table of Contents
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (0)
-5. checking no_input_delay (26)
-6. checking no_output_delay (26)
+5. checking no_input_delay (19)
+6. checking no_output_delay (19)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -87,16 +87,16 @@ Table of Contents
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (26)
+5. checking no_input_delay (19)
 -------------------------------
- There are 26 input ports with no input delay specified. (HIGH)
+ There are 19 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (26)
+6. checking no_output_delay (19)
 --------------------------------
- There are 26 ports with no output delay specified. (HIGH)
+ There are 19 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -141,7 +141,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      0.471        0.000                      0                  303        0.148        0.000                      0                  303        4.500        0.000                       0                   172  
+      3.853        0.000                      0                  795        0.157        0.000                      0                  795        4.500        0.000                       0                   409  
 
 
 All user specified timing constraints are met.
@@ -164,7 +164,7 @@ clk    {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk                 0.471        0.000                      0                  303        0.148        0.000                      0                  303        4.500        0.000                       0                   172  
+clk                 3.853        0.000                      0                  795        0.157        0.000                      0                  795        4.500        0.000                       0                   409  
 
 
 ------------------------------------------------------------------------------------------------
@@ -195,24 +195,24 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk
   To Clock:  clk
 
-Setup :            0  Failing Endpoints,  Worst Slack        0.471ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.148ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        3.853ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.157ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.471ns  (required time - arrival time)
-  Source:                 dv_pipe_reg[1]/C
+Slack (MET) :             3.853ns  (required time - arrival time)
+  Source:                 genblk1[2].uut_real/mult_inst/c_reg/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            genblk1[2].uut_real/y_reg[1][1]_bret__0/D
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            acc_reg[9]_bret__0/D
-                            (rising edge-triggered cell FDSE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
-  Data Path Delay:        9.554ns  (logic 6.788ns (71.051%)  route 2.766ns (28.949%))
-  Logic Levels:           15  (CARRY4=11 DSP48E1=1 LUT3=1 LUT4=1 LUT5=1)
+  Data Path Delay:        5.992ns  (logic 2.657ns (44.340%)  route 3.335ns (55.660%))
+  Logic Levels:           10  (CARRY4=7 LUT1=1 LUT4=1 LUT6=1)
   Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    0.924ns = ( 10.924 - 10.000 ) 
     Source Clock Delay      (SCD):    0.973ns
@@ -227,68 +227,54 @@ Slack (MET) :             0.471ns  (required time - arrival time)
   -------------------------------------------------------------------    -------------------
                          (clock clk rise edge)        0.000     0.000 r  
                                                       0.000     0.000 r  clk (IN)
-                         net (fo=173, unset)          0.973     0.973    clk
-    SLICE_X13Y86         FDRE                                         r  dv_pipe_reg[1]/C
+                         net (fo=408, unset)          0.973     0.973    genblk1[2].uut_real/mult_inst/clk
+    DSP48_X1Y17          DSP48E1                                      r  genblk1[2].uut_real/mult_inst/c_reg/CLK
   -------------------------------------------------------------------    -------------------
-    SLICE_X13Y86         FDRE (Prop_fdre_C_Q)         0.456     1.429 r  dv_pipe_reg[1]/Q
-                         net (fo=66, routed)          1.162     2.591    dv_pipe[1]
-    SLICE_X14Y80         LUT3 (Prop_lut3_I1_O)        0.150     2.741 r  p_0_out_i_6/O
-                         net (fo=1, routed)           0.415     3.156    p_0_out_i_6_n_0
-    DSP48_X0Y33          DSP48E1 (Prop_dsp48e1_A[20]_P[4])
-                                                      4.045     7.201 r  p_0_out/P[4]
-                         net (fo=1, routed)           0.624     7.826    p_0_out_n_101
-    SLICE_X11Y81         LUT5 (Prop_lut5_I2_O)        0.124     7.950 r  acc[-29]_i_10/O
-                         net (fo=1, routed)           0.564     8.514    acc[-29]_i_10_n_0
-    SLICE_X12Y82         LUT4 (Prop_lut4_I2_O)        0.124     8.638 r  acc[-29]_i_6/O
-                         net (fo=1, routed)           0.000     8.638    acc[-29]_i_6_n_0
-    SLICE_X12Y82         CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.513     9.151 r  acc_reg[-29]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     9.151    acc_reg[-29]_i_2_n_0
-    SLICE_X12Y83         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.268 r  acc_reg[-25]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     9.268    acc_reg[-25]_i_2_n_0
-    SLICE_X12Y84         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.385 r  acc_reg[-21]_i_2/CO[3]
-                         net (fo=1, routed)           0.000     9.385    acc_reg[-21]_i_2_n_0
-    SLICE_X12Y85         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.502 r  acc_reg[-17]_i_3/CO[3]
-                         net (fo=1, routed)           0.000     9.502    acc_reg[-17]_i_3_n_0
-    SLICE_X12Y86         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.619 r  acc_reg[-13]_bret_i_1/CO[3]
-                         net (fo=1, routed)           0.000     9.619    acc_reg[-13]_bret_i_1_n_0
-    SLICE_X12Y87         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.736 r  acc_reg[-9]_bret_i_1/CO[3]
-                         net (fo=1, routed)           0.000     9.736    acc_reg[-9]_bret_i_1_n_0
-    SLICE_X12Y88         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.853 r  acc_reg[-5]_bret_i_1/CO[3]
-                         net (fo=1, routed)           0.000     9.853    acc_reg[-5]_bret_i_1_n_0
-    SLICE_X12Y89         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     9.970 r  acc_reg[-1]_bret_i_1/CO[3]
-                         net (fo=1, routed)           0.000     9.970    acc_reg[-1]_bret_i_1_n_0
-    SLICE_X12Y90         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    10.087 r  acc_reg[3]_bret__0_i_1/CO[3]
-                         net (fo=1, routed)           0.000    10.087    acc_reg[3]_bret__0_i_1_n_0
-    SLICE_X12Y91         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    10.204 r  acc_reg[7]_bret__0_i_1/CO[3]
-                         net (fo=1, routed)           0.000    10.204    acc_reg[7]_bret__0_i_1_n_0
-    SLICE_X12Y92         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323    10.527 r  acc_reg[9]_bret__0_i_1/O[1]
-                         net (fo=1, routed)           0.000    10.527    data1[45]
-    SLICE_X12Y92         FDSE                                         r  acc_reg[9]_bret__0/D
+    DSP48_X1Y17          DSP48E1 (Prop_dsp48e1_CLK_P[13])
+                                                      0.434     1.407 f  genblk1[2].uut_real/mult_inst/c_reg/P[13]
+                         net (fo=2, routed)           0.800     2.207    genblk1[2].uut_real/mult_inst/P[1]
+    SLICE_X59Y39         LUT1 (Prop_lut1_I0_O)        0.124     2.331 r  genblk1[2].uut_real/mult_inst/round_val_carry_i_1__1/O
+                         net (fo=1, routed)           0.000     2.331    genblk1[2].uut_real/sat_inst/S[0]
+    SLICE_X59Y39         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     2.881 r  genblk1[2].uut_real/sat_inst/round_val_carry/CO[3]
+                         net (fo=1, routed)           0.000     2.881    genblk1[2].uut_real/sat_inst/round_val_carry_n_0
+    SLICE_X59Y40         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.995 r  genblk1[2].uut_real/sat_inst/round_val_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     2.995    genblk1[2].uut_real/sat_inst/round_val_carry__0_n_0
+    SLICE_X59Y41         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     3.109 r  genblk1[2].uut_real/sat_inst/round_val_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     3.109    genblk1[2].uut_real/sat_inst/round_val_carry__1_n_0
+    SLICE_X59Y42         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     3.223 r  genblk1[2].uut_real/sat_inst/round_val_carry__2/CO[3]
+                         net (fo=1, routed)           0.000     3.223    genblk1[2].uut_real/sat_inst/round_val_carry__2_n_0
+    SLICE_X59Y43         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     3.337 r  genblk1[2].uut_real/sat_inst/round_val_carry__3/CO[3]
+                         net (fo=1, routed)           0.000     3.337    genblk1[2].uut_real/sat_inst/round_val_carry__3_n_0
+    SLICE_X59Y44         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     3.451 r  genblk1[2].uut_real/sat_inst/round_val_carry__4/CO[3]
+                         net (fo=1, routed)           0.000     3.451    genblk1[2].uut_real/sat_inst/round_val_carry__4_n_0
+    SLICE_X59Y45         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.313     3.764 f  genblk1[2].uut_real/sat_inst/round_val_carry__5/O[3]
+                         net (fo=2, routed)           0.931     4.695    genblk1[2].uut_real/sat_inst/sat_check[1]
+    SLICE_X60Y46         LUT4 (Prop_lut4_I3_O)        0.335     5.030 f  genblk1[2].uut_real/sat_inst/y[1][2]_bret__0_i_6__1/O
+                         net (fo=1, routed)           0.811     5.842    genblk1[2].uut_real/mult_inst/y_reg[1][1]_bret__0_0
+    SLICE_X60Y47         LUT6 (Prop_lut6_I4_O)        0.331     6.173 r  genblk1[2].uut_real/mult_inst/y[1][2]_bret__0_i_1__1/O
+                         net (fo=2, routed)           0.793     6.965    genblk1[2].uut_real/mult_inst_n_63
+    SLICE_X64Y47         FDRE                                         r  genblk1[2].uut_real/y_reg[1][1]_bret__0/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk rise edge)       10.000    10.000 r  
                                                       0.000    10.000 r  clk (IN)
-                         net (fo=173, unset)          0.924    10.924    clk
-    SLICE_X12Y92         FDSE                                         r  acc_reg[9]_bret__0/C
+                         net (fo=408, unset)          0.924    10.924    genblk1[2].uut_real/clk
+    SLICE_X64Y47         FDRE                                         r  genblk1[2].uut_real/y_reg[1][1]_bret__0/C
                          clock pessimism              0.000    10.924    
                          clock uncertainty           -0.035    10.889    
-    SLICE_X12Y92         FDSE (Setup_fdse_C_D)        0.109    10.998    acc_reg[9]_bret__0
+    SLICE_X64Y47         FDRE (Setup_fdre_C_D)       -0.071    10.818    genblk1[2].uut_real/y_reg[1][1]_bret__0
   -------------------------------------------------------------------
-                         required time                         10.998    
-                         arrival time                         -10.527    
+                         required time                         10.818    
+                         arrival time                          -6.965    
   -------------------------------------------------------------------
-                         slack                                  0.471    
+                         slack                                  3.853    
 
 
 
@@ -296,15 +282,15 @@ Slack (MET) :             0.471ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.148ns  (arrival time - required time)
-  Source:                 x_reg[0][2]/C
+Slack (MET) :             0.157ns  (arrival time - required time)
+  Source:                 genblk1[2].uut_real/x_reg[1][-17]/C
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            x_reg[1][2]/D
+  Destination:            genblk1[2].uut_real/x_reg[2][-17]/D
                             (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk rise@0.000ns - clk rise@0.000ns)
-  Data Path Delay:        0.241ns  (logic 0.141ns (58.505%)  route 0.100ns (41.495%))
+  Data Path Delay:        0.254ns  (logic 0.141ns (55.511%)  route 0.113ns (44.489%))
   Logic Levels:           0  
   Clock Path Skew:        0.022ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    0.432ns
@@ -315,25 +301,25 @@ Slack (MET) :             0.148ns  (arrival time - required time)
   -------------------------------------------------------------------    -------------------
                          (clock clk rise edge)        0.000     0.000 r  
                                                       0.000     0.000 r  clk (IN)
-                         net (fo=173, unset)          0.410     0.410    clk
-    SLICE_X15Y80         FDRE                                         r  x_reg[0][2]/C
+                         net (fo=408, unset)          0.410     0.410    genblk1[2].uut_real/clk
+    SLICE_X63Y45         FDRE                                         r  genblk1[2].uut_real/x_reg[1][-17]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X15Y80         FDRE (Prop_fdre_C_Q)         0.141     0.551 r  x_reg[0][2]/Q
-                         net (fo=1, routed)           0.100     0.651    x_reg[0][24]
-    SLICE_X13Y80         FDRE                                         r  x_reg[1][2]/D
+    SLICE_X63Y45         FDRE (Prop_fdre_C_Q)         0.141     0.551 r  genblk1[2].uut_real/x_reg[1][-17]/Q
+                         net (fo=2, routed)           0.113     0.664    genblk1[2].uut_real/x_reg[1][-_n_0_17]
+    SLICE_X63Y45         FDRE                                         r  genblk1[2].uut_real/x_reg[2][-17]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk rise edge)        0.000     0.000 r  
                                                       0.000     0.000 r  clk (IN)
-                         net (fo=173, unset)          0.432     0.432    clk
-    SLICE_X13Y80         FDRE                                         r  x_reg[1][2]/C
+                         net (fo=408, unset)          0.432     0.432    genblk1[2].uut_real/clk
+    SLICE_X63Y45         FDRE                                         r  genblk1[2].uut_real/x_reg[2][-17]/C
                          clock pessimism              0.000     0.432    
-    SLICE_X13Y80         FDRE (Hold_fdre_C_D)         0.071     0.503    x_reg[1][2]
+    SLICE_X63Y45         FDRE (Hold_fdre_C_D)         0.075     0.507    genblk1[2].uut_real/x_reg[2][-17]
   -------------------------------------------------------------------
-                         required time                         -0.503    
-                         arrival time                           0.651    
+                         required time                         -0.507    
+                         arrival time                           0.664    
   -------------------------------------------------------------------
-                         slack                                  0.148    
+                         slack                                  0.157    
 
 
 
@@ -347,9 +333,9 @@ Period(ns):         10.000
 Sources:            { clk }
 
 Check Type        Corner  Lib Pin      Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location      Pin
-Min Period        n/a     DSP48E1/CLK  n/a            2.154         10.000      7.846      DSP48_X0Y35   acc1__0/CLK
-Low Pulse Width   Slow    FDRE/C       n/a            0.500         5.000       4.500      SLICE_X12Y87  acc_reg[-10]_bret/C
-High Pulse Width  Slow    FDRE/C       n/a            0.500         5.000       4.500      SLICE_X12Y87  acc_reg[-10]_bret/C
+Min Period        n/a     DSP48E1/CLK  n/a            3.884         10.000      6.116      DSP48_X1Y16   genblk1[0].uut_real/mult_inst/c_reg/CLK
+Low Pulse Width   Slow    FDRE/C       n/a            0.500         5.000       4.500      SLICE_X65Y43  d_out_reg[0]/C
+High Pulse Width  Slow    FDRE/C       n/a            0.500         5.000       4.500      SLICE_X65Y43  d_out_reg[0]/C
 
 
 

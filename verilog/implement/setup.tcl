@@ -20,7 +20,9 @@ upgrade_ip -quiet  [get_ips *]
 generate_target {all} [get_ips *]
 
 read_verilog -sv ../round_n_sat.sv
-read_verilog -sv ../iir_sos.sv
+read_verilog -sv ../iir_mult_accum.sv
+read_verilog -sv ../iir_sos_dsp48.sv
+read_verilog -sv ../iir_filter.sv
 read_verilog -sv ../top.sv
 
 read_xdc ../top.xdc

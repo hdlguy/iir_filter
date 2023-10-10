@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="8,386.912500 us"></ZoomStartTime>
+      <ZoomEndTime time="10,322.617501 us"></ZoomEndTime>
+      <Cursor1Time time="10,000.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="199"></NameColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wvobject type="logic" fp_name="/top_tb/uut/clk_in">
+      <obj_property name="ElementShortName">clk_in</obj_property>
+      <obj_property name="ObjectShortName">clk_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/ap_start">
+      <obj_property name="ElementShortName">ap_start</obj_property>
+      <obj_property name="ObjectShortName">ap_start</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/start_count">
+      <obj_property name="ElementShortName">start_count[2:0]</obj_property>
+      <obj_property name="ObjectShortName">start_count[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/freq">
+      <obj_property name="ElementShortName">freq[47:0]</obj_property>
+      <obj_property name="ObjectShortName">freq[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/phase">
+      <obj_property name="ElementShortName">phase[47:0]</obj_property>
+      <obj_property name="ObjectShortName">phase[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/m_axis_data_tvalid">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/m_axis_data_tdata">
+      <obj_property name="ElementShortName">m_axis_data_tdata[47:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/x_real">
+      <obj_property name="ElementShortName">x_real[17:0]</obj_property>
+      <obj_property name="ObjectShortName">x_real[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/x_imag">
+      <obj_property name="ElementShortName">x_imag[17:0]</obj_property>
+      <obj_property name="ObjectShortName">x_imag[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/y_real">
+      <obj_property name="ElementShortName">y_real[17:0]</obj_property>
+      <obj_property name="ObjectShortName">y_real[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/y_imag">
+      <obj_property name="ElementShortName">y_imag[17:0]</obj_property>
+      <obj_property name="ObjectShortName">y_imag[17:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/dv_in">
+      <obj_property name="ElementShortName">dv_in</obj_property>
+      <obj_property name="ObjectShortName">dv_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/dv_out_real">
+      <obj_property name="ElementShortName">dv_out_real</obj_property>
+      <obj_property name="ObjectShortName">dv_out_real</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/dv_out_imag">
+      <obj_property name="ElementShortName">dv_out_imag</obj_property>
+      <obj_property name="ObjectShortName">dv_out_imag</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_tb/uut/ila_trigger">
+      <obj_property name="ElementShortName">ila_trigger</obj_property>
+      <obj_property name="ObjectShortName">ila_trigger</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/Ncint">
+      <obj_property name="ElementShortName">Ncint[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ncint[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/Ncfrac">
+      <obj_property name="ElementShortName">Ncfrac[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ncfrac[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/Nsos">
+      <obj_property name="ElementShortName">Nsos[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nsos[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/coeff">
+      <obj_property name="ElementShortName">coeff[0:5][0:5]</obj_property>
+      <obj_property name="ObjectShortName">coeff[0:5][0:5]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/top_tb/uut/pi">
+      <obj_property name="ElementShortName">pi</obj_property>
+      <obj_property name="ObjectShortName">pi</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_tb/uut/rate">
+      <obj_property name="ElementShortName">rate[47:0]</obj_property>
+      <obj_property name="ObjectShortName">rate[47:0]</obj_property>
+   </wvobject>
+</wave_config>

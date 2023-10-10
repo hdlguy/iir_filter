@@ -12,12 +12,15 @@ module iir_mult_accum #(
     output  logic[47:0]     c
 );
 
+    logic[47:0] prod;
+    assign prod = $signed(a) * $signed(b);
+
     always_ff @(posedge clk) begin
         if (en) begin
             if (ld) begin
-                c <= $signed(a) * $signed(b);
+                c <= prod;
             end else begin
-                c <= $signed(c) + $signed(a) * $signed(b);
+                c <= $signed(c) + prod;
             end
         end
     end
