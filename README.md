@@ -4,6 +4,8 @@
 
 This project implements an IIR digital filter in FPGA logic as a cascade of second order sections using Octave, Vivado HLS and C++.
 
+HLS introduces complexity of the build process so a pure Systemverilog version of the filter is also provided.
+
 ## Files
 
 ./hls_build.tcl - Vitis HLS tcl script to convert the C++ filter design into a Vivado IP core.
@@ -15,4 +17,6 @@ This project implements an IIR digital filter in FPGA logic as a cascade of seco
 ./octave: - M script to generate the filter coefficients for the filter.
 
 ./cpp: - C++ source files for the IIR filter.
+
+./verilog - pure verilog version of the IIR filter.
 
