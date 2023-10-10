@@ -3,7 +3,7 @@
 // Five multiply-accummulate cycles are needed per sample.
 //
 // https://github.com/hdlguy/hls_iir_filter.git
-module iir_sos #(
+module iir_sos_dsp48 #(
     parameter int   Ndint = 3,
     parameter int   Ndfrac = 22,
     parameter int   Ncint = 4,
