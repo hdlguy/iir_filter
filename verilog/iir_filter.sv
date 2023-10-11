@@ -1,5 +1,9 @@
 // This is an iir filter built from cascaded second order sections.
 // The characteristics of the filter are controlled by parameters.
+//
+// https://github.com/hdlguy/hls_iir_filter.git
+// MIT License
+//
 module iir_filter #(
     parameter int  Ncint  = 4,  // number of coefficient integer bits
     parameter int  Ncfrac = 14, // number of coefficient fraction bits.
