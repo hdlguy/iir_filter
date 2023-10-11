@@ -3,14 +3,14 @@ Nsos = 3; % number of second order sections
 Wc_hp = 1/256; 
 Wc_lp = 1/30;
 
-coeff_int = 4;
+coeff_int = 3;
 coeff_width = 18;
 coeff_frac = coeff_width-coeff_int;
 
 %  iir filter
 
-%[b, a] = butter(Nsos*2, Wc_hp, "high"); 
-[b, a] = butter(Nsos*2, Wc_lp, "low"); 
+[b, a] = butter(Nsos*2, Wc_hp, "high"); 
+%[b, a] = butter(Nsos*2, Wc_lp, "low"); 
 
 % convert filter to second order sections
 [sos, g] = tf2sos(b,a);
@@ -74,8 +74,9 @@ printf("};\n\n");
 
 % print out the coeficients in Systemverilog table.
 printf("\n");
+printf("    localparam int  Ncwidth  = %d;\n", coeff_width);
 printf("    localparam int  Ncint  = %d;\n", coeff_int);
-printf("    localparam int  Ncfrac = %d;\n", coeff_width-coeff_int);
+printf("    localparam int  Ncfrac = Ncwidth-Ncint;\n");
 printf("    localparam int  Nsos = %d;\n", Nsos);
 printf("    localparam real coeff[0:Nsos-1][0:5] =  {\n");
 for i=1:Nsos

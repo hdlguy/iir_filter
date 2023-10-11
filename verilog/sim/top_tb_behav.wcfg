@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8,386.912500 us"></ZoomStartTime>
-      <ZoomEndTime time="10,322.617501 us"></ZoomEndTime>
-      <Cursor1Time time="10,000.000000 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="10,001.000001 us"></ZoomEndTime>
+      <Cursor1Time time="0.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="199"></NameColumnWidth>
       <ValueColumnWidth column_width="108"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="22" />
+   <WVObjectSize size="21" />
    <wvobject type="logic" fp_name="/top_tb/uut/clk_in">
       <obj_property name="ElementShortName">clk_in</obj_property>
       <obj_property name="ObjectShortName">clk_in</obj_property>
@@ -39,10 +39,12 @@
    <wvobject type="array" fp_name="/top_tb/uut/freq">
       <obj_property name="ElementShortName">freq[47:0]</obj_property>
       <obj_property name="ObjectShortName">freq[47:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/phase">
       <obj_property name="ElementShortName">phase[47:0]</obj_property>
       <obj_property name="ObjectShortName">phase[47:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/top_tb/uut/m_axis_data_tvalid">
       <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
@@ -55,18 +57,54 @@
    <wvobject type="array" fp_name="/top_tb/uut/x_real">
       <obj_property name="ElementShortName">x_real[17:0]</obj_property>
       <obj_property name="ObjectShortName">x_real[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/x_imag">
       <obj_property name="ElementShortName">x_imag[17:0]</obj_property>
       <obj_property name="ObjectShortName">x_imag[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/y_real">
       <obj_property name="ElementShortName">y_real[17:0]</obj_property>
       <obj_property name="ObjectShortName">y_real[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/y_imag">
       <obj_property name="ElementShortName">y_imag[17:0]</obj_property>
       <obj_property name="ObjectShortName">y_imag[17:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/top_tb/uut/dv_in">
       <obj_property name="ElementShortName">dv_in</obj_property>
@@ -79,10 +117,6 @@
    <wvobject type="logic" fp_name="/top_tb/uut/dv_out_imag">
       <obj_property name="ElementShortName">dv_out_imag</obj_property>
       <obj_property name="ObjectShortName">dv_out_imag</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/top_tb/uut/ila_trigger">
-      <obj_property name="ElementShortName">ila_trigger</obj_property>
-      <obj_property name="ObjectShortName">ila_trigger</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/Ncint">
       <obj_property name="ElementShortName">Ncint[31:0]</obj_property>
