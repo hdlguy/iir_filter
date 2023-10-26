@@ -1,5 +1,5 @@
 clear; 
-Nsos = 3; % number of second order sections
+Nsos = 5; % number of second order sections
 Wc_hp = 1/256; 
 Wc_lp = 1/30;
 
@@ -8,9 +8,7 @@ coeff_width = 18;
 coeff_frac = coeff_width-coeff_int;
 
 %  iir filter
-
-[b, a] = butter(Nsos*2, Wc_hp, "high"); 
-%[b, a] = butter(Nsos*2, Wc_lp, "low"); 
+[b, a] = butter(Nsos*2, Wc_lp, "low"); 
 
 % convert filter to second order sections
 [sos, g] = tf2sos(b,a);
@@ -33,26 +31,11 @@ Nsim = 1024;
 s=zeros(1,Nsim); s(5) = 1; % impulse
 
 % direct implementation
-s_filt = filter(b,a,s);
+s_filt  = filter(b,a,s);
+sq_filt = filter(b_q, a_q, s);
 
-% low level second order sections
-s_filt3 = s;
-for i=1:Nsos
-    Xk0=0; Xk1=0; Xk2=0; Yk0=0; Yk1=0; Yk2=0;
-    b0 = sos_q_scaled(i,1);
-    b1 = sos_q_scaled(i,2);
-    b2 = sos_q_scaled(i,3);
-    a1 = sos_q_scaled(i,5);
-    a2 = sos_q_scaled(i,6);
-    for k=1:Nsim
-        Xk0 = s_filt3(k);    
-        Yk0 = b0*Xk0 + b1*Xk1 + b2*Xk2 - a1*Yk1 - a2*Yk2; % note - sign on a1, a2.
-        Xk2=Xk1; Xk1=Xk0; Yk2=Yk1; Yk1=Yk0; 
-        s_filt3(k) = Yk0;
-    endfor
-endfor
 
-plot(s_filt, '*r-'); hold on; plot(s_filt3, 'ob-'); hold off;
+plot(s_filt, '*r-'); hold on; plot(sq_filt, 'ob-'); hold off;
 
 
 % print out the coefficients in C++ table. 
