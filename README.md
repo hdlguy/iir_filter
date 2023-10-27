@@ -6,6 +6,8 @@ This project implements an IIR digital filter in FPGA logic as a cascade of seco
 
 HLS introduces complexity of the build process so a pure Systemverilog version of the filter is also provided.
 
+A 10th order IIR low-pass filter is demonstrated in Verilog and tested in hardware.
+
 ## Files
 
 ./hls_build.tcl - Vitis HLS tcl script to convert the C++ filter design into a Vivado IP core.
