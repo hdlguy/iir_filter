@@ -10,13 +10,13 @@ HLS introduces complexity of the build process so a pure Systemverilog version o
 
 ./hls_build.tcl - Vitis HLS tcl script to convert the C++ filter design into a Vivado IP core.
 
-./fpga/implement: - Contains Vivado tcl scripts to compile the filter into hardware.
+./fpga/implement - Contains Vivado tcl scripts to compile the filter into hardware.
 
-./fpga/source: - Systemverilog source for hardware implementation.
+./fpga/source - Systemverilog source for hardware implementation.
 
-./octave: - M script to generate the filter coefficients for the filter.
+./octave - M script to generate the filter coefficients for the filter.
 
-./cpp: - C++ source files for the IIR filter.
+./cpp - C++ source files for the IIR filter.
 
 ./verilog - pure verilog version of the IIR filter.
 
