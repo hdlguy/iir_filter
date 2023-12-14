@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project implements an IIR digital filter in FPGA logic as a cascade of second order sections using Octave, Vivado HLS and C++.
+This project implements an IIR digital filter in FPGA logic as a cascade of second order sections using Octave, Vivado HLS C++ and Systemverilog.
 
-HLS introduces complexity of the build process so a pure Systemverilog version of the filter is also provided.
+HLS introduces complexity of the build process so a pure Systemverilog version of the filter is provided.
 
 A 10th order IIR low-pass filter is demonstrated in Verilog and tested in hardware.
 
