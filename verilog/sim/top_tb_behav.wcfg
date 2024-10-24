@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="10,001.000001 us"></ZoomEndTime>
-      <Cursor1Time time="0.000000 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="22.001000000 ms"></ZoomEndTime>
+      <Cursor1Time time="0.000000000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="199"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="21" />
    <wvobject type="logic" fp_name="/top_tb/uut/clk_in">
@@ -99,8 +99,8 @@
       <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       <obj_property name="CellHeight">100</obj_property>
       <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
-      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogYRangeMin">-6.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">7.000000</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>
@@ -131,8 +131,8 @@
       <obj_property name="ObjectShortName">Nsos[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/top_tb/uut/coeff">
-      <obj_property name="ElementShortName">coeff[0:5][0:5]</obj_property>
-      <obj_property name="ObjectShortName">coeff[0:5][0:5]</obj_property>
+      <obj_property name="ElementShortName">coeff[0:4][0:5]</obj_property>
+      <obj_property name="ObjectShortName">coeff[0:4][0:5]</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/top_tb/uut/pi">
       <obj_property name="ElementShortName">pi</obj_property>
