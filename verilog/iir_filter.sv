@@ -24,10 +24,16 @@ module iir_filter #(
     localparam int Ndint = 3;   // number of integer bits in sample data word.
     localparam int Ndfrac = 22; // number of fraction bits in sample data word.
     
-    logic dv[Nsos:0]; // data valid signals between SOS stages.
-    logic[Ndint-1:-Ndfrac] data[Nsos:0];  // data between SOS stages.
-    assign dv[0] = dv_in;
-    assign data[0] = {{(Ndint-1){d_in[17]}}, d_in, 5'b00000}; // sign extend and zero pad 18 bit input to 25 bit filter word.
+//    logic dv[Nsos:0]; // data valid signals between SOS stages.
+    logic[Nsos:0] dv=0; // data valid signals between SOS stages.
+//    logic[Ndint-1:-Ndfrac] data[Nsos:0];  // data between SOS stages.
+    logic[Nsos:0][Ndint-1:-Ndfrac] data=0;  // data between SOS stages.
+//    assign dv[0] = dv_in;
+//    assign data[0] = {{(Ndint-1){d_in[17]}}, d_in, 5'b00000}; // sign extend and zero pad 18 bit input to 25 bit filter word.
+    always_ff @(posedge clk) begin
+        dv[0]   <= dv_in;
+        data[0] <= {{(Ndint-1){d_in[17]}}, d_in, 5'b00000};
+    end
     
 
     // Second Order Sections
@@ -38,12 +44,16 @@ module iir_filter #(
     
 
     // round and saturate from 25 bits down to 18 bit output word
-    logic[17:0] dout_sat=0;
+    logic[17:0] dout_sat;
     round_n_sat #(.Win(Ndint+Ndfrac), .Nround(Ndfrac-17), .Nsat(Ndint-1)) sat_inst (.din(data[Nsos]), .dout(dout_sat));
+    logic        dv_out_int=0;
+    logic[17:0]  d_out_int=0;
     always_ff @(posedge clk) begin
-        dv_out <= dv[Nsos];
-        d_out  <= dout_sat;
+        dv_out_int <= dv[Nsos];
+        d_out_int  <= dout_sat;
     end
+    assign dv_out = dv_out_int;
+    assign d_out  = d_out_int;
 
 endmodule
 

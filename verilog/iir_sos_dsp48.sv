@@ -34,9 +34,9 @@ module iir_sos_dsp48 #(
     logic[Ndint-1:-Ndfrac]  acc_sat;
 
     // the single DSP48 multiplier-accumulator
-    logic acc_en, acc_ld;
-    logic[(Ndint+Ndfrac)-1:0] a; // sample data
-    logic[(Ncint+Ncfrac)-1:0] b; // coefficient
+    logic acc_en=0, acc_ld=0;
+    logic[(Ndint+Ndfrac)-1:0] a=0; // sample data
+    logic[(Ncint+Ncfrac)-1:0] b=0; // coefficient
     logic[47:0] c;
     //logic[47-(Ndfrac+Ncfrac):-(Ndfrac+Ncfrac)] acc;
     iir_mult_accum #(.Wa(Ndint+Ndfrac), .Wb(Ncint+Ncfrac)) mult_inst (.clk(clk), .en(acc_en), .ld(acc_ld), .a(a), .b(b), .c(c));
