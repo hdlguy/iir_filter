@@ -12,18 +12,19 @@ module iir_mult_accum #(
     output  logic[47:0]     c
 );
 
-    logic[47:0] prod;
+    logic[47:0] prod, c_int=0;
     assign prod = $signed(a) * $signed(b);
 
     always_ff @(posedge clk) begin
         if (en) begin
             if (ld) begin
-                c <= prod;
+                c_int <= prod;
             end else begin
-                c <= $signed(c) + prod;
+                c_int <= $signed(c_int) + prod;
             end
         end
     end
+    assign c = c_int;
 
 endmodule
     

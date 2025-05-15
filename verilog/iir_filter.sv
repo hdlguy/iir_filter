@@ -38,7 +38,7 @@ module iir_filter #(
     
 
     // round and saturate from 25 bits down to 18 bit output word
-    logic[17:0] dout_sat;
+    logic[17:0] dout_sat=0;
     round_n_sat #(.Win(Ndint+Ndfrac), .Nround(Ndfrac-17), .Nsat(Ndint-1)) sat_inst (.din(data[Nsos]), .dout(dout_sat));
     always_ff @(posedge clk) begin
         dv_out <= dv[Nsos];

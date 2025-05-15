@@ -1,6 +1,6 @@
-clear; 
+clear;
 Nsos = 5; % number of second order sections
-Wc_hp = 1/256; 
+%Wc_hp = 1/256;
 Wc_lp = 1/30;
 
 coeff_int = 3;
@@ -8,7 +8,7 @@ coeff_width = 18;
 coeff_frac = coeff_width-coeff_int;
 
 %  iir filter
-[b, a] = butter(Nsos*2, Wc_lp, "low"); 
+[b, a] = butter(Nsos*2, Wc_lp, "low");
 
 % convert filter to second order sections
 [sos, g] = tf2sos(b,a);
@@ -38,7 +38,7 @@ sq_filt = filter(b_q, a_q, s);
 plot(s_filt, '*r-'); hold on; plot(sq_filt, 'ob-'); hold off;
 
 
-% print out the coefficients in C++ table. 
+% print out the coefficients in C++ table.
 printf("const int CoeffWordSize = %d;\n", coeff_width);
 printf("const int CoeffIntSize = %d;\n", coeff_int);
 printf("typedef ap_fixed<CoeffWordSize, CoeffIntSize, AP_RND, AP_SAT, 0> coeff_type;\n");

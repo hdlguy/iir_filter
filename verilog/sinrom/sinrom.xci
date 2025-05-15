@@ -3,7 +3,7 @@
   "ip_inst": {
     "xci_name": "sinrom",
     "component_reference": "xilinx.com:ip:dds_compiler:6.0",
-    "ip_revision": "25",
+    "ip_revision": "26",
     "gen_directory": "../../../../proj.gen/sources_1/ip/sinrom",
     "parameters": {
       "component_parameters": {
@@ -166,7 +166,7 @@
         "ARCHITECTURE": [ { "value": "artix7" } ],
         "BASE_BOARD_PART": [ { "value": "" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
-        "DEVICE": [ { "value": "xc7a100ti" } ],
+        "DEVICE": [ { "value": "xc7a35ti" } ],
         "NEXTGEN_VERSAL": [ { "value": "0" } ],
         "PACKAGE": [ { "value": "csg324" } ],
         "PREFHDL": [ { "value": "VERILOG" } ],
@@ -178,12 +178,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "25" } ],
+        "IPREVISION": [ { "value": "26" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../proj.gen/sources_1/ip/sinrom" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2024.1" } ],
+        "SWVERSION": [ { "value": "2024.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },
