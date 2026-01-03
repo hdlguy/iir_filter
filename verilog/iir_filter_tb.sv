@@ -37,62 +37,62 @@ module iir_filter_tb ();
     iir_filter #(.Ncint(Ncint), .Ncfrac(Ncfrac), .Nsos(Nsos), .coeff(coeff)) uut (.clk(clk), .dv_in(dv_in), .d_in(d_in), .dv_out(dv_out), .d_out(d_out));
 
 
-    // impulse
-    initial begin
-    
-        for (int i=0; i<500; i++) begin
-            dv_in = 0;
-            d_in = 0;
-            #(clk_period*6);
-            dv_in = 1;
-            d_in = 0;
-            #(clk_period*1);
-        end 
-                
-        dv_in = 0;
-        d_in = 0;
-        #(clk_period*6);
-        dv_in = 1;
-        d_in = 100000;
-        #(clk_period*1);
-        
-        forever begin
-            dv_in = 0;
-            d_in = 0;
-            #(clk_period*6);
-            dv_in = 1;
-            d_in = 0;
-            #(clk_period*1);
-        end         
-        
-    end    
-    
-//    // linear FM chirp
-//    real phase, freq, rate;
-//    localparam real pi = 3.1419527;
-//    localparam real chirprate = 2.0*pi/((2.0**22.0)-1.0);
+//    // impulse
 //    initial begin
     
-//        dv_in = 0;
-//        d_in = 0;
-//        phase = 0;
-//        freq = -pi/64;
-//        rate = chirprate;
-//        #(clk_period*6);
-        
-//        forever begin
-        
+//        for (int i=0; i<500; i++) begin
 //            dv_in = 0;
+//            d_in = 0;
 //            #(clk_period*6);
 //            dv_in = 1;
-//            phase = phase + freq;
-//            freq  = freq  + rate;
-//            d_in = ((2.0**16.0)-1.0)*$sin(phase);
-//            #(clk_period*1);            
-            
-//        end
+//            d_in = 0;
+//            #(clk_period*1);
+//        end 
+                
+//        dv_in = 0;
+//        d_in = 0;
+//        #(clk_period*6);
+//        dv_in = 1;
+//        d_in = 100000;
+//        #(clk_period*1);
         
-//    end
+//        forever begin
+//            dv_in = 0;
+//            d_in = 0;
+//            #(clk_period*6);
+//            dv_in = 1;
+//            d_in = 0;
+//            #(clk_period*1);
+//        end         
+        
+//    end    
+    
+    // linear FM chirp
+    real phase, freq, rate;
+    localparam real pi = 3.1419527;
+    localparam real chirprate = 2.0*pi/((2.0**19.0)-1.0);
+    initial begin
+    
+        dv_in = 0;
+        d_in = 0;
+        phase = 0;
+        freq = -pi/64;
+        rate = chirprate;
+        #(clk_period*6);
+        
+        forever begin
+        
+            dv_in = 0;
+            #(clk_period*6);
+            dv_in = 1;
+            phase = phase + freq;
+            freq  = freq  + rate;
+            d_in = ((2.0**16.0)-1.0)*$sin(phase);
+            #(clk_period*1);            
+            
+        end
+        
+    end
 
 endmodule
 
