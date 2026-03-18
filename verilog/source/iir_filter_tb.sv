@@ -28,14 +28,12 @@ module iir_filter_tb ();
         '{ +0.002563476562, +0.004882812500, +0.002319335938, +1.000000000000, -1.957031250000, +0.967803955078 }
     };
 
-    logic        dv_in;
-    logic[17:0]  d_in;
-    logic        dv_out;
-    logic[17:0]  d_out;
-    logic clk=0; localparam time clk_period = 10; always #(clk_period/2) clk=~clk;
+    logic        dv_in, dv_out_imag, dv_out_real;
+    logic[17:0]  d_in_imag, d_in_real, d_out_imag, d_out_real;
+    localparam time clk_period = 10; logic clk=0; always #(clk_period/2) clk=~clk;
 
-    iir_filter #(.Ncint(Ncint), .Ncfrac(Ncfrac), .Nsos(Nsos), .coeff(coeff)) uut (.clk(clk), .dv_in(dv_in), .d_in(d_in), .dv_out(dv_out), .d_out(d_out));
-
+    iir_filter #(.Ncint(Ncint), .Ncfrac(Ncfrac), .Nsos(Nsos), .coeff(coeff)) uut_imag (.clk(clk), .dv_in(dv_in), .d_in(d_in_imag), .dv_out(dv_out_imag), .d_out(d_out_imag));
+    iir_filter #(.Ncint(Ncint), .Ncfrac(Ncfrac), .Nsos(Nsos), .coeff(coeff)) uut_real (.clk(clk), .dv_in(dv_in), .d_in(d_in_real), .dv_out(dv_out_real), .d_out(d_out_real));
 
 //    // impulse
 //    initial begin
@@ -71,10 +69,11 @@ module iir_filter_tb ();
     real phase, freq, rate;
     localparam real pi = 3.1419527;
     localparam real chirprate = 2.0*pi/((2.0**19.0)-1.0);
+    localparam real A = ((2.0**17.0)-1.0);
     initial begin
     
         dv_in = 0;
-        d_in = 0;
+        d_in_real=0; d_in_imag=0;
         phase = 0;
         freq = -pi/64;
         rate = chirprate;
@@ -87,13 +86,23 @@ module iir_filter_tb ();
             dv_in = 1;
             phase = phase + freq;
             freq  = freq  + rate;
-            d_in = ((2.0**16.0)-1.0)*$sin(phase);
+            d_in_imag = A*$sin(phase);
+            d_in_real = A*$cos(phase);
             #(clk_period*1);            
             
         end
         
     end
 
+
+    real mag;
+    int mag_int=0, mag_db;
+    assign mag = $sqrt($signed(d_out_imag)**2.0 + $signed(d_out_real)**2.0);
+    assign mag_db = 1000.0*20.0*$log10(mag/A); // actually milli-dB
+    always_ff @(posedge clk) begin
+        if (dv_out_imag) mag_int <= mag;
+    end 
+    
 endmodule
 
 /*
